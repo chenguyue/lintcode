@@ -1,0 +1,30 @@
+class Solution {
+    /*
+     * param k : As description.
+     * param n : As description.
+     * return: An integer denote the count of digit k in 1..n
+     */
+    public int digitCounts(int k, int n) {
+        // write your code here
+        int s=0;
+        if(k==0){s++;}
+        for(int i=0;i<=n;i++)
+        {
+            s=s+collect(i,k);
+        }
+        return s;
+    }
+    public int collect(int x,int y)
+    {
+        int num1=0;
+        int num2=0;
+        while(x>0)
+        {
+            num2=x%10;
+            x=x/10;
+            if(num2==y)
+            {num1++;}
+        }
+        return num1;
+    }
+};
