@@ -1,0 +1,47 @@
+class Solution {
+    /*
+     * @param k : description of k
+     * @param nums : array of nums
+     * @return: description of return
+     */
+    public int kthLargestElement(int k, int[] nums) {
+        // write your code here
+        quick_sort(nums,0,nums.length-1);
+        return nums[k-1];
+    }
+    
+    
+    
+    public static void quick_sort(int s[],int l,int r)
+	{
+		if(l<r)
+		{
+				int left=l,right=r,x=s[l];
+				while(left<right)
+				{
+					while(left<right  && s[right]<=x)
+					{
+						right--;
+					}
+				
+					if(left<right)
+					{
+						s[left++]=s[right];
+					}
+					while(left<right && s[left]>x)
+					{
+						left++;
+					}
+					if(left<right)
+					{
+						s[right--]=s[left];
+					}
+				}
+		s[left]=x;
+		quick_sort(s,l,left-1);
+		quick_sort(s,left+1,r);
+				
+		}
+
+	}
+}
