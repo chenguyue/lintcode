@@ -1,0 +1,35 @@
+class Solution {
+    /**
+     * @param n an integer
+     * @return the nth prime number as description.
+     */
+    public int nthUglyNumber(int n) {
+        // Write your code here
+        int a[]=new int[n+1];
+        a[0]=1;
+        int i=0;
+        int m2=0;
+        int m3=0;
+        int m5=0;
+        while(i<n)
+        {
+            i++;
+            a[i]=min(a[m2]*2,a[m3]*3,a[m5]*5);
+            if(a[i]==a[m2]*2) m2++;
+            if(a[i]==a[m3]*3) m3++;
+            if(a[i]==a[m5]*5) m5++;
+            
+        }
+        return a[n-1];
+    }
+    
+    public int min(int a,int b,int c)
+    {
+        if ((a<=b) && (a<=c)) return a;
+        if ((b<=a) && (b<=c)) return b;
+        if ((c<=a) && (c<=b)) return c;
+        return 0;
+    }
+    
+
+}
