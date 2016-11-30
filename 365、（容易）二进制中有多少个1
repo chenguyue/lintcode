@@ -1,0 +1,17 @@
+public class Solution {
+    /**
+     * @param num: an integer
+     * @return: an integer, the number of ones in num
+     */
+    public int countOnes(int num) {
+        // write your code here
+        int s=0;
+        if (num<0) {num=num+2147483647;num=num+1;s++;}
+        while(num>0)
+        {
+            if(num%2==1) {s++;}
+            num=num/2;
+        }
+        return s;
+    }
+}
