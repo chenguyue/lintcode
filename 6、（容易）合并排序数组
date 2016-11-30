@@ -1,0 +1,39 @@
+class Solution {
+    /**
+     * @param A and B: sorted integer array A and B.
+     * @return: A new sorted integer array
+     */
+    public int[] mergeSortedArray(int[] A, int[] B) {
+        // Write your code here
+        int C[]=new int[A.length+B.length];
+        int q=0;
+        int w=0;
+        int e=0;
+        while(e<C.length)
+        {
+            if(q>=A.length)
+			{
+				while(w<B.length)
+				{
+					C[e++]=B[w++];
+				}
+			}
+			else if(w>=B.length)
+			{
+				while(q<A.length)
+				{
+					C[e++]=A[q++];
+				}
+			}
+            else if(q<A.length && A[q]<=B[w] )
+            {
+                C[e++]=A[q++];
+            }
+            else if(w<B.length && A[q]>B[w])
+			{
+				C[e++]=B[w++];
+			}
+        }
+        return C;
+    }
+}
