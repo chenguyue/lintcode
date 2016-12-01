@@ -1,0 +1,22 @@
+public class Solution {
+    /**
+     * @param n: An integer
+     * @return: An integer
+     */
+    public int climbStairs(int n) {
+        // write your code here
+        int s[]=new int[n+1];
+        if(n==0) return 1;
+        if(n==1) return 1;
+        if(n==2) return 2;
+        else
+            {
+                s[0]=0;s[1]=1;s[2]=2;
+                for(int i=3;i<n+1;i++)
+                {
+                    s[i]=s[i-1]+s[i-2];
+                }
+            }
+        return s[n];
+    }
+}
