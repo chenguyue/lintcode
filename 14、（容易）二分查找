@@ -1,0 +1,27 @@
+class Solution {
+    /**
+     * @param nums: The integer array.
+     * @param target: Target to find.
+     * @return: The first position of target. Position starts from 0.
+     */
+    public int binarySearch(int[] nums, int target) {
+        //write your code here
+        int low=0,high=nums.length-1;
+        while(low<=high)
+        {
+            int center=(low+high)/2;
+            if  (nums[center] ==  target)   
+                { 
+                    while(center > 0 && (nums[center-1] == target))
+                    {
+                        center--;
+                    }
+                    return center;
+                    
+                }
+            else if (  nums[center]   >   target)     {high = center-1;}
+            else    { low = center+1;}
+        }
+        return -1;
+    }
+}
