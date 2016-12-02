@@ -1,0 +1,28 @@
+public class Solution {
+    /**
+     * @param matrix, a list of lists of integers
+     * @param target, an integer
+     * @return a boolean, indicate whether matrix contains target
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        // write your code here
+        if(matrix.length == 0) return false;
+        int low=0,high=(matrix[0].length)*(matrix.length)-1;
+        int a[]=new int[high+1];
+        for(int i=0;i < matrix.length;i++)
+        {
+            for(int j=0;j < matrix[0].length;j++)
+            {
+                a[i*matrix[0].length+j]=matrix[i][j];
+            }
+        }
+         while(low<=high)
+        {
+            int center=(low+high)/2;
+            if  (a[center] ==  target)   {return true;}
+            else if (  a[center]   >   target)     {high = center-1;}
+            else    { low = center+1;}
+        }
+        return false;
+    }
+}
