@@ -1,0 +1,42 @@
+public class Solution {
+    /**
+     * @param A an integer array
+     * @return void
+     */
+    public void sortIntegers2(int[] A) {
+        // Write your code here
+        quick_sort(A,0,A.length-1);
+    }
+    
+    public static void quick_sort(int[] a, int low, int high)
+    {
+        if(low < high)
+        {
+            int l = low;
+            int h = high;
+            int x = a[l];
+            while(l < h)
+            {
+                while(l < h && a[h] >= x)
+                {
+                    h--;
+                }
+                if(l < h )
+                {
+                    a[l++] = a[h];
+                }
+                while(l < h && a[l] < x)
+                {
+                    l++;
+                }
+                if(l < h)
+                {
+                    a[h--] = a[l];
+                }
+            }
+        a[l] = x;
+        quick_sort(a,low,l-1);
+        quick_sort(a,l+1,high);
+        }
+    }
+}
