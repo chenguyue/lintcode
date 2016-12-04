@@ -1,0 +1,27 @@
+public class Solution {
+    /**
+     * @param n an integer
+     * @return true if this is a happy number or false
+     */
+    public boolean isHappy(int n) {
+        // Write your code here
+        if(n == 1) return true;
+        int s = n;
+        int sum = 0;
+        int k = 0;
+        while(s > 1 && k < 50)
+        {
+            while( n > 0)
+            {
+                sum = sum + (n % 10) * (n % 10);
+                n = n / 10;
+            }
+            s = sum;
+            n = sum;
+            sum = 0;
+            k++;
+        }
+        if(s == 1) return true;
+        else return false;
+    }
+}
