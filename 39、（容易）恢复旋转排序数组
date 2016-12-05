@@ -1,0 +1,20 @@
+public class Solution {
+    /**
+     * @param nums: The rotated sorted array
+     * @return: void
+     */
+    public void recoverRotatedSortedArray(ArrayList<Integer> nums) {
+        // write your code
+        int tag = 0;
+        if(nums.isEmpty() == true) {tag = 1;}
+        Integer x = nums.get(nums.size()-1);
+        int i = 0;
+        while(tag == 0 && nums.get(i) >= x)
+        {
+            Integer temp = nums.get(i);
+            nums.remove(i);
+            nums.add(temp);
+        }
+        
+    }
+}
