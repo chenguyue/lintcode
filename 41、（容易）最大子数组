@@ -1,0 +1,27 @@
+public class Solution {
+    /**
+     * @param nums: A list of integers
+     * @return: A integer indicate the sum of max subarray
+     */
+    public int maxSubArray(int[] nums) {
+        // write your code
+        int k = 0;
+        int max = nums[0];
+        for(int l = 0;l < nums.length;l++)
+        {
+            if(nums[l] < 0) k++;
+            if(nums[l] > max) max = nums[l];
+        }
+        if(k == nums.length) return max;
+        int thisSum = 0;
+        int maxSum  = 0;
+        for(int i = 0;i < nums.length;i++)
+        {
+            thisSum = thisSum + nums[i];
+            if(thisSum > maxSum)  maxSum = thisSum;
+            else if(thisSum < 0) thisSum = 0;
+            
+        }
+        return maxSum;
+    }
+}
