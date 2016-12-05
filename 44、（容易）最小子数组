@@ -1,0 +1,27 @@
+public class Solution {
+    /**
+     * @param nums: a list of integers
+     * @return: A integer indicate the sum of minimum subarray
+     */
+    public int minSubArray(ArrayList<Integer> nums) {
+        // write your code
+        if(nums.size() == 0) return 1073741823;
+        int min = nums.get(0);
+        int k = 0;
+        for(int j = 0;j < nums.size();j++)
+        {
+            if(nums.get(j) > 0)     k++;
+            if(nums.get(j) < min)   min = nums.get(j);
+        }
+        if(k == nums.size())    return min;
+        int thisSum = 0;
+        int minSum  = 0;
+        for(int i = 0;i < nums.size();i++)
+        {
+            thisSum = thisSum + nums.get(i);
+            if(thisSum < minSum)  minSum  = thisSum;
+            else if(thisSum > 0)  thisSum = 0;
+        }
+        return minSum;
+    }
+}
