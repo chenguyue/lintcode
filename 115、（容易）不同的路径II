@@ -1,0 +1,58 @@
+public class Solution {
+    /**
+     * @param obstacleGrid: A list of lists of integers
+     * @return: An integer
+     */
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        // write your code here
+        int p[][] = obstacleGrid;
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+        if(m <= 1 && n <= 1)  return 1;
+        if (obstacleGrid[0][0] == 1) return 0;
+        for(int i = 0;i < n;i++)
+        {
+           if(obstacleGrid[0][i] != 1) {p[0][i] = 1;}
+           else 
+           {
+               while(i < n)
+               {
+                   p[0][i] = 0;
+                   i++;
+               }
+           }
+        }
+        for(int i = 1;i < m;i++)
+        {
+           if(obstacleGrid[i][0] != 1) {p[i][0] = 1;}
+           else 
+           {
+               while(i < m)
+               {
+                   p[i][0] = 0;
+                   i++;
+               }
+           }
+        }
+        
+        for(int i = 1;i < m;i++)
+        {
+            for(int j = 1;j < n;j++)
+            {
+                if(obstacleGrid[i][j] != 1)  p[i][j] = p[i - 1][j] + p[i][j - 1];
+                else   p[i][j] = 0;
+            }
+        }
+        /*
+        for(int i = 0;i < m;i++)
+        {
+            for(int j = 0;j < n;j++)
+            {
+                System.out.print(p[i][j]+" ");
+            }
+            System.out.println();
+        }
+        */
+        return p[m - 1][n - 1];
+    }
+}
