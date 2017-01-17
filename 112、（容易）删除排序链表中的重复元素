@@ -1,0 +1,36 @@
+/**
+ * Definition for ListNode
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+     * @param ListNode head is the head of the linked list
+     * @return: ListNode head of linked list
+     */
+    public static ListNode deleteDuplicates(ListNode head) { 
+        // write your code here
+        ListNode h1 = head;
+        if(head == null)
+            return null;
+        while(h1.next != null)
+        {
+            ListNode n1 = h1.next;
+            if(h1.val == n1.val)
+            {
+                h1.next = n1.next;
+            }
+            else
+            {
+                h1 = n1;   
+            }
+        }
+        return head;
+    }  
+}
