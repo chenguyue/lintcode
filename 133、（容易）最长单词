@@ -1,0 +1,35 @@
+class Solution {
+    /**
+     * @param dictionary: an array of strings
+     * @return: an arraylist of strings
+     */
+    ArrayList<String> longestWords(String[] dictionary) {
+        // write your code here
+        int max = 0;
+        int num = 0;
+        int num2 = 0;
+        for(int i = 0;i < dictionary.length;i++)
+        {
+            String s1 = dictionary[i];
+            if (max < s1.length()) max = s1.length();
+        }
+        for(int i = 0;i < dictionary.length;i++)
+        {
+            String s2 = dictionary[i];
+            if(max == s2.length())
+            {
+                num++;
+            }
+        }
+        ArrayList<String> AL = new ArrayList<String>(num);
+        for(int i = 0;i < dictionary.length;i++)
+        {
+            String s3 = dictionary[i];
+            if(max == s3.length())
+            {
+                AL.add(s3);
+            }
+        }
+        return AL;
+    }
+}
