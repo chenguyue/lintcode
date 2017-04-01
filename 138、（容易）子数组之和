@@ -1,0 +1,48 @@
+public class Solution {
+    /**
+     * @param nums: A list of integers
+     * @return: A list of integers includes the index of the first number 
+     *          and the index of the last number
+     */
+    public ArrayList<Integer> subarraySum(int[] nums) {
+        // write your code here
+        ArrayList<Integer> a1 = new ArrayList<Integer>();
+        int sum = 0;
+        int index_1 = 0;
+        int index_2 = 0;
+        sum = nums[0];
+        if(sum == 0)
+        {
+            a1.add(0);
+            a1.add(0);
+            return a1;
+        }
+        while(sum != 0)
+        {
+            while(sum != 0 && index_2 < nums.length - 1)
+            {
+                sum = sum + nums[++index_2];
+            }
+            if(sum == 0)
+            {
+                a1.add(index_1);
+                a1.add(index_2);
+                return a1;
+            }
+            sum -= nums[index_1];
+            index_1++;
+            while(sum != 0 && index_2 > index_1)
+            {
+                sum = sum - nums[index_2--];
+            }
+            if(sum == 0)
+            {
+                a1.add(index_1);
+                a1.add(index_2);
+                return a1;
+            }
+        }
+        return a1;
+    }
+
+}
