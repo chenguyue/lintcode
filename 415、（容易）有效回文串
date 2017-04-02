@@ -1,0 +1,17 @@
+public class Solution {
+    /**
+     * @param s A string
+     * @return Whether the string is a valid palindrome
+     */
+    public boolean isPalindrome(String s) {
+        // Write your code here
+        if(s.length() < 1)
+            return true;
+        StringBuilder str = new StringBuilder(s);
+        String str1 = str.reverse().toString();
+        String reg = "[^0-9A-Za-z]";
+        s = s.replaceAll(reg,"");
+        str1 = str1.replaceAll(reg,"");
+        return s.equalsIgnoreCase(str1);
+    }
+}
