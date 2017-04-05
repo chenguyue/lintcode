@@ -1,0 +1,31 @@
+public class Solution {
+    /**
+     * @param nums: An integer array sorted in ascending order
+     * @param target: An integer
+     * @return an integer
+     */
+    public int findPosition(int[] nums, int target) {
+        // Write your code here
+        if(nums == null || nums.length < 1)
+            return -1;
+        int low = 0;
+        int high = nums.length;
+        int mid = (low + high) / 2;
+        while(low + 1 < high)
+        {
+            if(target == nums[mid])
+                return mid;
+            if(target > nums[mid])
+                low = mid;
+                mid = (low + high) / 2;
+            if(target < nums[mid])
+                high = mid;
+                mid = (low + high) / 2;
+        }
+        if(target == nums[low])
+            return low;
+        if(target == nums[high - 1])
+            return high - 1;
+        return -1;
+    }
+}
