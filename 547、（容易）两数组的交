@@ -1,0 +1,31 @@
+public class Solution {
+    /**
+     * @param nums1 an integer array
+     * @param nums2 an integer array
+     * @return an integer array
+     */
+    public int[] intersection(int[] nums1, int[] nums2) {
+        // Write your code here
+        HashSet set = new HashSet();
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int index1 = 0;
+        int index2 = 0;
+        while(index1 < nums1.length && index2 < nums2.length)
+        {
+            if(nums1[index1] == nums2[index2])
+                set.add(nums1[index1++]);
+            else if(nums1[index1] > nums2[index2])
+                index2++;
+            else
+                index1++;
+        }
+        Object result[] = set.toArray();
+        int r[] = new int[result.length];
+        for(int i = 0;i < result.length;i++)
+        {
+            r[i] = Integer.parseInt(String.valueOf(result[i]));
+        }
+        return r;
+    }
+}
