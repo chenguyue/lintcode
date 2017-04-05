@@ -1,0 +1,45 @@
+public class Solution {
+    /**
+     * @param s A string
+     * @return whether the string is a valid parentheses
+     */
+    public boolean isValidParentheses(String s) {
+        // Write your code here
+        Stack<Character> stack = new Stack<Character>();
+        int index = 0;
+        int flag  = 0;
+        String s1 = "([{";
+        String s2 = ")]}";
+        while(index < s.length())
+        {
+            char c = s.charAt(index);
+            String str = String.valueOf(c);
+            if(s1.contains(str))
+            {
+                stack.push(c);
+                flag++;
+            }
+            else if(flag == 0 && s2.contains(str))
+            {
+                return false;
+            }
+            else
+                {
+                    if(stack.peek() == '(' && c != ')')
+                        return false;
+                    else if(stack.peek() == '[' && c != ']')
+                        return false;
+                    else if(stack.peek() == '{' && c != '}')
+                        return false;
+                    else
+                        {   
+                            stack.pop();
+                            flag--;
+                        }
+                }
+            index++;
+        }
+        if(flag == 0) return true;
+        else          return false;
+    }
+}
