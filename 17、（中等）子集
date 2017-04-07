@@ -1,0 +1,33 @@
+class Solution {
+    /**
+     * @param S: A set of numbers.
+     * @return: A list of lists. All valid subsets.
+     */
+    public ArrayList<ArrayList<Integer>> subsets(int[] nums) {
+        // write your code here
+        ArrayList<ArrayList<Integer>> rst = new ArrayList<ArrayList<Integer>>();
+        if(nums == null)
+            return rst;
+        if(nums.length == 0)
+        {
+            rst.add(new ArrayList<Integer>());
+            return rst;
+        }
+        ArrayList<Integer> pr = new ArrayList<Integer>();
+        Arrays.sort(nums);
+        son(rst,pr,nums,0);
+        return rst;
+    }
+    
+    public void son(ArrayList<ArrayList<Integer>> rst,ArrayList<Integer> pr,int[] nums,int i)
+    {
+        rst.add(new ArrayList<Integer>(pr));
+        //System.out.println(pr);
+        for(int j = i;j < nums.length;j++)
+        {
+            pr.add(nums[j]);
+            son(rst,pr,nums,j+1);
+            pr.remove(pr.size() -1);
+        }
+    }
+}
