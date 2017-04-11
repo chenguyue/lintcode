@@ -1,0 +1,69 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;      
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+     * @param l1: the first list
+     * @param l2: the second list
+     * @return: the sum list of l1 and l2 
+     */
+    public ListNode addLists(ListNode l1, ListNode l2) {
+        // write your code here
+        ListNode r1 = new ListNode(0);
+        ListNode r2 = r1;
+        if(l1 == null && l2 == null)
+        {
+            return r1;
+        }
+        int temp = 0;
+        int sum = 0;
+        while(l1 != null && l2 != null)
+        {
+            sum = l1.val + l2.val + temp;
+            temp = sum / 10;
+            ListNode t = new ListNode(sum % 10);
+            r2.next = t;
+            r2 = t;
+            l1 = l1.next;
+            l2 = l2.next;
+            //System.out.println(t.val);
+        }
+        //System.out.println("First End");
+        while(l1 != null)
+        {
+            sum = l1.val + temp;
+            temp = sum / 10;
+            ListNode t = new ListNode(sum % 10);
+            r2.next = t;
+            r2 = t;
+            l1 = l1.next;
+            //System.out.println(t.val);
+        }
+        while(l2 != null)
+        {
+            sum = l2.val + temp;
+            temp = sum / 10;
+            ListNode t = new ListNode(sum % 10);
+            r2.next = t;
+            r2 = t;
+            l2 = l2.next;
+            //System.out.println(t.val);
+        }
+        if(temp > 0)
+        {
+            ListNode t = new ListNode(1);
+            r2.next = t;
+        }
+        //r2.next = null;
+        return r1.next;
+    }
+    
+}
