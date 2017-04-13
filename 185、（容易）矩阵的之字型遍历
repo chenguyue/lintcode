@@ -1,0 +1,70 @@
+public class Solution {
+    /**
+     * @param matrix: a matrix of integers
+     * @return: an array of integers
+     */ 
+    public int[] printZMatrix(int[][] matrix) {
+        // write your code here
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int dx = 0;
+        int dy = 0;
+        int res[] = new int[m*n];
+        res[0] = matrix[0][0];
+        int i = 1;
+        while(i < m*n)
+        {
+            while((dx-1>=0) && (dy+1<n))
+            {
+                dx = dx - 1;
+                dy = dy + 1;
+                res[i] = matrix[dx][dy];
+                i++;
+                //System.out.println((i-1)+"---"+matrix[dx][dy]);
+            }
+            if(dy + 1 < n)
+            {
+                dy = dy + 1;
+                res[i] = matrix[dx][dy];
+                i++;
+                //System.out.println((i-1)+"---"+matrix[dx][dy]);
+            }
+            else
+            {
+                if(dx + 1 < m)
+                {
+                    dx = dx + 1;
+                    res[i] = matrix[dx][dy];
+                    i++;
+                    //System.out.println((i-1)+"---"+matrix[dx][dy]);
+                }
+            }
+            while((dx+1<m) && (dy-1)>=0)
+            {
+                dx = dx + 1;
+                dy = dy - 1;
+                res[i] = matrix[dx][dy];
+                i++;
+                //System.out.println((i-1)+"---"+matrix[dx][dy]);
+            }
+            if(dx + 1 < m)
+            {
+                dx = dx + 1;
+                res[i] = matrix[dx][dy];
+                i++;
+                //System.out.println((i-1)+"---"+matrix[dx][dy]);
+            }
+            else
+            {
+                if(dy + 1 < n)
+                {
+                    dy = dy + 1;
+                    res[i] = matrix[dx][dy];
+                    i++;
+                    //System.out.println((i-1)+"---"+matrix[dx][dy]);
+                }
+            }
+        }
+        return res;
+    }
+}
