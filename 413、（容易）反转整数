@@ -1,0 +1,32 @@
+public class Solution {
+    /**
+     * @param n the integer to be reversed
+     * @return the reversed integer
+     */
+    public int reverseInteger(int n) {
+        // Write your code here
+        int flag = 0;
+        if(n == -2147483648)
+            return 0;
+        if(n < 0)
+        {
+            flag = 1;
+            n = 0 - n;
+        }
+        long res = 0;
+        //ArrayList<Integer> a = new ArrayList<Integer>();
+        while(n > 0)
+        {
+            int m = n % 10;
+            res = res * 10 + m;
+            n = n / 10;
+        }
+        if(res > 2147483647)
+            return 0;
+        if(flag == 0)
+            return (int)(res);
+        else
+            return (int)(-res);
+        
+    }
+}
