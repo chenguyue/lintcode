@@ -1,0 +1,37 @@
+public class Solution {
+    /**
+     * @param digits a number represented as an array of digits
+     * @return the result
+     */
+    public int[] plusOne(int[] digits) {
+        // Write your code here
+        if(digits == null || digits.length < 1)
+            return digits;
+        ArrayList<Integer> a = new ArrayList<Integer>();
+        Stack<Integer> s = new Stack<Integer>();
+        int temp1 = 1;
+        int temp2 = 0;
+        for(int i = digits.length - 1;i >= 0 ;i--)
+        {
+            //System.out.print(digits[i]);
+            temp2 = (digits[i] + temp1) % 10;
+            temp1 = (digits[i] + temp1) / 10;
+            s.push(temp2);
+        }
+        if(temp1 > 0)
+            s.push(1);
+        System.out.println();
+        while(!s.empty())
+        {
+            int t = s.pop();
+            //System.out.print(t);
+            a.add(t);
+        }
+        int res[] = new int[a.size()];
+        for(int i = 0;i < a.size();i++)
+        {
+            res[i] = a.get(i);
+        }
+        return res;
+    }
+}
