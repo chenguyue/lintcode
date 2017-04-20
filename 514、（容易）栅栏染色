@@ -1,0 +1,26 @@
+public class Solution {
+    /**
+     * @param n non-negative integer, n posts
+     * @param k non-negative integer, k colors
+     * @return an integer, the total number of ways
+     */
+    public int numWays(int n, int k) {
+        // Write your code here
+        if(n == 0)
+            return 0;
+        if(n == 1)
+            return k;
+        if(n == 2)
+            return k*k;
+        int a1 = k;
+        int a2 = k*k;
+        int a3 = 0;
+        for(int i = 3;i <= n;i++)
+        {
+            a3 = (a1 + a2) * (k-1);
+            a1 = a2;
+            a2 = a3;
+        }
+        return a3;
+    }
+}
