@@ -1,0 +1,43 @@
+public class Solution {
+    /**
+     * @param matrix: A list of lists of integers
+     * @param: A number you want to search in the matrix
+     * @return: An integer indicate the occurrence of target in the given matrix
+     */
+    public int searchMatrix(int[][] matrix, int target) {
+        // write your code here
+        if(matrix == null)
+            return 0;
+        if(matrix.length == 0 || matrix[0].length == 0)
+            return 0;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int x = 0;
+        int y = matrix[0].length - 1;
+        
+        int count = 0;
+        while(x <= m-1 && y >= 0)
+        {
+            if(x <= m-1 && y >= 0 && matrix[x][y] == target)
+            {
+                /*
+                System.out.print(x);
+                System.out.print("--");
+                System.out.print(y);
+                System.out.println();
+                */
+                count++;
+                x++;
+            }
+            if(x <= m-1 && y >= 0 && matrix[x][y] > target)
+            {
+                y--;
+            }
+            if(x <= m-1 && y >= 0 && matrix[x][y] < target)
+            {
+                x++;
+            }
+        }
+        return count;
+    }
+}
